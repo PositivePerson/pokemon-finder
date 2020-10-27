@@ -6,8 +6,8 @@ import { SEARCH_USERS, SET_LOADING, CLEAR_USERS, GET_POKEMON, GET_ABILITIES } fr
 
 const PokemonState = (props) => {
 	const initialState = {
-		users: [],
-		user: {},
+		// users: [],
+		pokemon: {},
 		abilities: [],
 		loading: false
 	};
@@ -15,21 +15,19 @@ const PokemonState = (props) => {
 	const [ state, dispatch ] = useReducer(PokemonReducer, initialState);
 
 	// Search Users
-	const searchUsers = async (text) => {
-		setLoading();
+	// const searchUsers = async (text) => {
+	// 	setLoading();
 
-		const res = await axios.get(
-			`https://api.github.com/search/users?q=${text}&client_id=${process.env
-				.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-		);
+	// 	const res = await axios.get(
+	// 		`https://api.github.com/search/users?q=${text}&client_id=${process.env
+	// 			.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+	// 	);
 
-		// const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${text}`);
-
-		dispatch({
-			type: SEARCH_USERS,
-			payload: res.data.items
-		});
-	};
+	// 	dispatch({
+	// 		type: SEARCH_USERS,
+	// 		payload: res.data.items
+	// 	});
+	// };
 
 	// Get Pokemon
 	const getPokemon = async (name) => {
@@ -51,7 +49,7 @@ const PokemonState = (props) => {
 
 		dispatch({
 			type: GET_ABILITIES,
-			payload: res.data
+			payload: res.data.abilities
 		});
 	};
 
@@ -64,11 +62,11 @@ const PokemonState = (props) => {
 	return (
 		<PokemonContext.Provider
 			value={{
-				users: state.users,
-				user: state.user,
+				// users: state.users,
+				pokemon: state.pokemon,
 				abilities: state.abilities,
 				loading: state.loading,
-				searchUsers,
+				// searchUsers,
 				clearUsers,
 				getPokemon,
 				getPokemonAbilities

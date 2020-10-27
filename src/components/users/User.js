@@ -7,25 +7,21 @@ import PokemonContext from '../../context/pokemon/pokemonContext';
 const Pokemon = ({ match }) => {
 	const pokemonContext = useContext(PokemonContext);
 
-	const {
-		getPokemon,
-		loading,
-		user,
-		// abilities,
-		getPokemonAbilities
-	} = pokemonContext;
+	const { getPokemon, loading, pokemon, getPokemonAbilities } = pokemonContext;
 
 	useEffect(() => {
 		getPokemon(match.params.pokemonName);
 		console.log('match.params.pokemonName: ', match.params.pokemonName);
 		console.log('match: ', match);
 		getPokemonAbilities(match.params.pokemonName);
+		// console.log('abilities: ', abilities);
 		// eslint-disable-next-line
 	}, []);
 
-	const { abilities, weight, ...forms } = user;
-	// const { bio } = user;
-	console.log('abilities, weight, forms: ', abilities, weight, forms);
+	// console.log('abilities: ', ...abilities);
+	console.log('pokemon: ', pokemon);
+	const { abilities, weight, ...forms } = pokemon;
+	console.log('abilities: ', abilities);
 
 	if (loading) return <Spinner />;
 
@@ -56,14 +52,14 @@ const Pokemon = ({ match }) => {
 								</Fragment>
 							)}
 						</li>
-						{/* <li>
-							{company && (
+						<li>
+							{weight && (
 								<Fragment>
-									<strong>Company: </strong> {company}
+									<strong>Weight: </strong> {weight}
 								</Fragment>
 							)}
 						</li>
-						<li>
+						{/* <li>
 							{blog && (
 								<Fragment>
 									<strong>Website: </strong> {blog}
@@ -79,7 +75,7 @@ const Pokemon = ({ match }) => {
 				{/* <div className='badge badge-light'>Public Abilities: {abilities}</div> */}
 				{/* <div className='badge badge-dark'>Public Gists: {public_gists}</div> */}
 			</div>
-			{/* <Abilities abilities={abilities} /> */}
+			{abilities && <Abilities abilities={abilities} />}
 		</Fragment>
 	);
 };

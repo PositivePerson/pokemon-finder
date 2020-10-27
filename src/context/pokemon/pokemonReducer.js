@@ -1,18 +1,18 @@
-import { SEARCH_USERS, SET_LOADING, CLEAR_USERS, GET_POKEMON, GET_ABILITIES } from '../types';
+import { SET_LOADING, CLEAR_USERS, GET_POKEMON, GET_ABILITIES } from '../types';
 
 export default (state, action) => {
 	switch (action.type) {
-		case SEARCH_USERS:
-			return {
-				...state,
-				users: action.payload,
-				loading: false
-			};
+		// case SEARCH_USERS:
+		// 	return {
+		// 		...state,
+		// 		users: action.payload,
+		// 		loading: false
+		// 	};
 		case GET_POKEMON:
 			console.log(action.payload);
 			return {
 				...state,
-				user: action.payload,
+				pokemon: action.payload,
 				loading: false
 			};
 		case CLEAR_USERS:
@@ -22,6 +22,7 @@ export default (state, action) => {
 				loading: false
 			};
 		case GET_ABILITIES:
+			// console.log('action.payload: ', action.payload);
 			return {
 				...state,
 				abilities: action.payload,

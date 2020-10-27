@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Logo from '../../img/pokemon-logo.png';
 
-const Navbar = ({ icon, title }) => {
+const Navbar = ({ img, title }) => {
 	return (
 		<nav className='navbar bg-primary'>
 			<h1>
-				<i className={icon}> {title}</i>
+				<img src={Logo} alt='' style={imgStyle} />
+				<span style={titleStyle}>{title}</span>
 			</h1>
 			<ul>
 				<li>
@@ -20,14 +22,25 @@ const Navbar = ({ icon, title }) => {
 	);
 };
 
+const imgStyle = {
+	verticalAlign: 'middle',
+	maxWidth: '2em'
+};
+
+const titleStyle = {
+	display: 'inline-block',
+	height: '100%',
+	verticalAlign: 'middle',
+	fontWeight: '500',
+	paddingLeft: '.25em'
+};
+
 Navbar.defaultProps = {
-	title: 'Github Finder',
-	icon: 'fab fa-github'
+	title: 'Pokemon Finder'
 };
 
 Navbar.propTypes = {
-	title: PropTypes.string.isRequired,
-	icon: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired
 };
 
 export default Navbar;
