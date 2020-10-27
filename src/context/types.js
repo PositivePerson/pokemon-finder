@@ -1,5 +1,6 @@
-export const SEARCH_USERS = 'SEARCH_USERS';
+export const SEARCH_POKEMONS = 'SEARCH_POKEMONS';
 export const GET_POKEMON = 'GET_POKEMON';
+export const FILTER_POKEMONS = 'FILTER_POKEMONS';
 export const CLEAR_USERS = 'CLEAR_USERS';
 export const GET_ABILITIES = 'GET_ABILITIES';
 export const SET_LOADING = 'SET_LOADING';

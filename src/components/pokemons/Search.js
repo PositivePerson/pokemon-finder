@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PokemonContext from '../../context/pokemon/pokemonContext';
 import AlertContext from '../../context/alert/alertContext';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Search = () => {
 	const pokemonContext = useContext(PokemonContext);
@@ -9,34 +9,51 @@ const Search = () => {
 
 	const [ text, setText ] = useState('');
 
+	// useEffect(
+	// 	() => {
+	// 		if (text.length === 1) PokemonContext.searchPokemons('');
+	// 	},
+	// 	[ text ]
+	// );
+
 	const onSubmit = (e) => {
 		e.preventDefault();
 		if (text === '') {
 			alertContext.setAlert('Please enter something', 'light');
 		} else {
-			pokemonContext.getPokemon(text);
+			// pokemonContext.searchPokemons(text);
+			pokemonContext.filterPokemons(text);
 			setText('');
 		}
 	};
 
-	const onChange = (e) => setText(e.target.value);
+	let firstLoad = true;
+	const onChange = (e) => {
+		setText(e.target.value);
+		// if (firstLoad) {
+		pokemonContext.searchPokemons(text);
+		// 	firstLoad = false;
+		// } else {
+		pokemonContext.filterPokemons(text);
+		// }
+	};
 
 	return (
 		<div>
 			<form className='form' onSubmit={onSubmit}>
 				<input type='text' name='text' placeholder='Search Pokemon...' value={text} onChange={onChange} />
-				{/* <input type='submit' value='Search' className='btn btn-dark btn-block' /> */}
-				<div>
+				<input type='submit' value='Search' className='btn btn-dark btn-block' />
+				{/* <div>
 					<Link to={`/pokemons/${text}`}>
 						<input type='submit' value='Search' className='btn btn-dark btn-block' />
 					</Link>
-				</div>
+				</div> */}
 			</form>
-			{/* {pokemonContext.users.length > 0 && (
+			{pokemonContext.filtered.length < 1049 && (
 				<button className='btn btn-light btn-block' onClick={pokemonContext.clearUsers}>
 					Clear
 				</button>
-			)} */}
+			)}
 		</div>
 	);
 };

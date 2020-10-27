@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Users from './components/users/Users';
-import Pokemon from './components/users/User';
-import Search from './components/users/Search';
+import Users from './components/pokemons/Users';
+import Pokemon from './components/pokemons/Pokemon';
+import Search from './components/pokemons/Search';
 import Alert from './components/layout/Alert';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
@@ -36,7 +36,7 @@ const App = () => {
 								<Route exact path='/' component={Home} />
 								<Route exact path='/about' component={About} />
 								<Route exact path='/pokemons/:pokemonName' component={Pokemon} />
-								<Route component={NotFound} />
+								<Route path='*' component={NotFound} status={404} />
 							</Switch>
 						</div>
 					</div>

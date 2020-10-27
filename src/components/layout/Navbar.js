@@ -6,11 +6,11 @@ import Logo from '../../img/pokemon-logo.png';
 const Navbar = ({ img, title }) => {
 	return (
 		<nav className='navbar bg-primary'>
-			<h1>
+			<h3 className='m-0'>
 				<img src={Logo} alt='' style={imgStyle} />
 				<span style={titleStyle}>{title}</span>
-			</h1>
-			<ul>
+			</h3>
+			<ul className='m-0'>
 				<li>
 					<Link to='/'>Home</Link>
 				</li>

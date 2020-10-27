@@ -2,11 +2,12 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import PokemonContext from './pokemonContext';
 import PokemonReducer from './pokemonReducer';
-import { SEARCH_USERS, SET_LOADING, CLEAR_USERS, GET_POKEMON, GET_ABILITIES } from '../types';
+import { SEARCH_POKEMONS, SET_LOADING, CLEAR_USERS, GET_POKEMON, FILTER_POKEMONS, GET_ABILITIES } from '../types';
 
 const PokemonState = (props) => {
 	const initialState = {
-		// users: [],
+		pokemons: [],
+		filtered: [],
 		pokemon: {},
 		abilities: [],
 		loading: false
@@ -14,30 +15,45 @@ const PokemonState = (props) => {
 
 	const [ state, dispatch ] = useReducer(PokemonReducer, initialState);
 
-	// Search Users
-	// const searchUsers = async (text) => {
-	// 	setLoading();
+	// Search Pokemons
+	const searchPokemons = async (text) => {
+		setLoading();
 
-	// 	const res = await axios.get(
-	// 		`https://api.github.com/search/users?q=${text}&client_id=${process.env
-	// 			.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-	// 	);
+		const res = await axios.get(
+			// `https://api.github.com/search/users?q=${text}&client_id=${process.env
+			// 	.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+			`https://pokeapi.co/api/v2/pokemon/?limit=1500&offset=0`
+		);
 
-	// 	dispatch({
-	// 		type: SEARCH_USERS,
-	// 		payload: res.data.items
-	// 	});
-	// };
+		dispatch({
+			type: SEARCH_POKEMONS,
+			payload: res.data.results
+		});
+	};
 
 	// Get Pokemon
 	const getPokemon = async (name) => {
 		setLoading();
 
-		const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+		let res;
+		try {
+			res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+		} catch (error) {
+			console.log(error.response);
+			return 0;
+		}
 
 		dispatch({
 			type: GET_POKEMON,
 			payload: res.data
+		});
+	};
+
+	// Filter Pokemons
+	const filterPokemons = (text) => {
+		dispatch({
+			type: FILTER_POKEMONS,
+			payload: text
 		});
 	};
 
@@ -62,13 +78,15 @@ const PokemonState = (props) => {
 	return (
 		<PokemonContext.Provider
 			value={{
-				// users: state.users,
+				pokemons: state.pokemons,
+				filtered: state.filtered,
 				pokemon: state.pokemon,
 				abilities: state.abilities,
 				loading: state.loading,
-				// searchUsers,
+				searchPokemons,
 				clearUsers,
 				getPokemon,
+				filterPokemons,
 				getPokemonAbilities
 			}}
 		>

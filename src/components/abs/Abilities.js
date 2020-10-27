@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RepoItem from './RepoItem';
+import OneAbility from './OneAbility';
 
-const Abilities = ({ abilities }) => {
-	return abilities.map((ab) => <RepoItem repo={ab} key={ab.id} />);
+const Abilities = ({ moves }) => {
+	return moves.map((ab) => <OneAbility repo={ab} key={ab.id} />);
 };
 
 Abilities.propTypes = {

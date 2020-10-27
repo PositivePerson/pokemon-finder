@@ -6,18 +6,22 @@ import PokemonContext from '../../context/pokemon/pokemonContext';
 const Users = () => {
 	const pokemonContext = useContext(PokemonContext);
 
-	const { loading, users } = pokemonContext;
+	const { loading, filtered, pokemons } = pokemonContext;
+	console.log('Pokemons from Users.js: ', pokemons);
+	console.log('Filtered from Users.js: ', filtered);
 
 	if (loading) {
 		return <Spinner />;
 	} else {
-		console.log(users);
+		console.log(filtered);
 		console.log(pokemonContext);
-		return <div style={userStyle}>{users.map((user) => <UserItem key={user.id} user={user} />)}</div>;
+		if (filtered.length < 1050)
+			return <div style={pokemonStyle}>{filtered.map((pkmn) => <UserItem key={pkmn.name} user={pkmn} />)}</div>;
+		else return null;
 	}
 };
 
-const userStyle = {
+const pokemonStyle = {
 	display: 'grid',
 	gridTemplateColumns: 'repeat(3, 1fr)',
 	gridGap: '1rem'

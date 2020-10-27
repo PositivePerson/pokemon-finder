@@ -1,19 +1,28 @@
-import { SET_LOADING, CLEAR_USERS, GET_POKEMON, GET_ABILITIES } from '../types';
+import { SEARCH_POKEMONS, SET_LOADING, CLEAR_USERS, GET_POKEMON, FILTER_POKEMONS, GET_ABILITIES } from '../types';
 
 export default (state, action) => {
 	switch (action.type) {
-		// case SEARCH_USERS:
-		// 	return {
-		// 		...state,
-		// 		users: action.payload,
-		// 		loading: false
-		// 	};
-		case GET_POKEMON:
+		case SEARCH_POKEMONS:
 			console.log(action.payload);
+			return {
+				...state,
+				pokemons: action.payload,
+				loading: false
+			};
+		case GET_POKEMON:
+			console.log('GET_POKEMON: ', action.payload);
 			return {
 				...state,
 				pokemon: action.payload,
 				loading: false
+			};
+		case FILTER_POKEMONS:
+			return {
+				...state,
+				filtered: state.pokemons.filter((pokemon) => {
+					const regex = new RegExp(`${action.payload}`, 'gi');
+					return pokemon.name.match(regex);
+				})
 			};
 		case CLEAR_USERS:
 			return {
