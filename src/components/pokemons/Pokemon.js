@@ -11,21 +11,21 @@ import PokemonContext from '../../context/pokemon/pokemonContext';
 const Pokemon = ({ match }) => {
 	const pokemonContext = useContext(PokemonContext);
 
-	const { clearUsers, getPokemon, loading, pokemon, getPokemonAbilities } = pokemonContext;
+	const { clearPokemons, getPokemon, loading, pokemon, getPokemonAbilities } = pokemonContext;
 
 	useEffect(() => {
 		getPokemon(match.params.pokemonName);
 		console.log('match.params.pokemonName: ', match.params.pokemonName);
-		console.log('match: ', match);
+		// console.log('match: ', match);
 		getPokemonAbilities(match.params.pokemonName);
-		clearUsers();
+		clearPokemons();
 		// console.log('abilities: ', abilities);
 		// console.log('pokemon: ', pokemon);
 		// eslint-disable-next-line
 	}, []);
 
 	console.log('pokemon: ', pokemon);
-	const { sprites, abilities, moves, stats, name, weight, forms } = pokemon;
+	const { sprites, abilities, moves, stats, name, weight } = pokemon;
 	console.log('abilities: ', abilities);
 
 	if (loading || sprites === undefined) return <Spinner />;

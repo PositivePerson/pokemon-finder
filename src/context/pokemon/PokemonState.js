@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import PokemonContext from './pokemonContext';
 import PokemonReducer from './pokemonReducer';
-import { SEARCH_POKEMONS, SET_LOADING, CLEAR_USERS, GET_POKEMON, FILTER_POKEMONS, GET_ABILITIES } from '../types';
+import { SEARCH_POKEMONS, SET_LOADING, CLEAR_POKEMONS, GET_POKEMON, FILTER_POKEMONS, GET_ABILITIES } from '../types';
 
 const PokemonState = (props) => {
 	const initialState = {
@@ -70,7 +70,7 @@ const PokemonState = (props) => {
 	};
 
 	// Clear Users
-	const clearUsers = () => dispatch({ type: CLEAR_USERS });
+	const clearPokemons = () => dispatch({ type: CLEAR_POKEMONS });
 
 	// Set Loading
 	const setLoading = () => dispatch({ type: SET_LOADING });
@@ -84,7 +84,7 @@ const PokemonState = (props) => {
 				abilities: state.abilities,
 				loading: state.loading,
 				searchPokemons,
-				clearUsers,
+				clearPokemons,
 				getPokemon,
 				filterPokemons,
 				getPokemonAbilities

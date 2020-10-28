@@ -1,4 +1,4 @@
-import { SEARCH_POKEMONS, SET_LOADING, CLEAR_USERS, GET_POKEMON, FILTER_POKEMONS, GET_ABILITIES } from '../types';
+import { SEARCH_POKEMONS, SET_LOADING, CLEAR_POKEMONS, GET_POKEMON, FILTER_POKEMONS, GET_ABILITIES } from '../types';
 
 export default (state, action) => {
 	switch (action.type) {
@@ -25,7 +25,7 @@ export default (state, action) => {
 					return pokemon.name.match(regex);
 				})
 			};
-		case CLEAR_USERS:
+		case CLEAR_POKEMONS:
 			return {
 				...state,
 				filtered: [],

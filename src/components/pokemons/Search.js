@@ -50,7 +50,7 @@ const Search = () => {
 				</div> */}
 			</form>
 			{pokemonContext.filtered.length < 1049 && (
-				<button className='btn btn-light btn-block' onClick={pokemonContext.clearUsers}>
+				<button className='btn btn-light btn-block' onClick={pokemonContext.clearPokemons}>
 					Clear
 				</button>
 			)}
