@@ -17,6 +17,7 @@ export default (state, action) => {
 				loading: false
 			};
 		case FILTER_POKEMONS:
+			console.log('Regex action payload: ', action.payload);
 			return {
 				...state,
 				filtered: state.pokemons.filter((pokemon) => {
@@ -27,7 +28,7 @@ export default (state, action) => {
 		case CLEAR_USERS:
 			return {
 				...state,
-				users: [],
+				filtered: [],
 				loading: false
 			};
 		case GET_ABILITIES:

@@ -8,6 +8,7 @@ const Search = () => {
 	const alertContext = useContext(AlertContext);
 
 	const [ text, setText ] = useState('');
+	const [ firstLoad, setFirstLoad ] = useState(true);
 
 	// useEffect(
 	// 	() => {
@@ -27,15 +28,14 @@ const Search = () => {
 		}
 	};
 
-	let firstLoad = true;
 	const onChange = (e) => {
 		setText(e.target.value);
-		// if (firstLoad) {
-		pokemonContext.searchPokemons(text);
-		// 	firstLoad = false;
-		// } else {
-		pokemonContext.filterPokemons(text);
-		// }
+		if (firstLoad) {
+			pokemonContext.searchPokemons(text);
+			setFirstLoad(false);
+		} else {
+			pokemonContext.filterPokemons(e.target.value);
+		}
 	};
 
 	return (

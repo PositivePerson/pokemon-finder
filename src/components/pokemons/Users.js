@@ -13,8 +13,6 @@ const Users = () => {
 	if (loading) {
 		return <Spinner />;
 	} else {
-		console.log(filtered);
-		console.log(pokemonContext);
 		if (filtered.length < 1050)
 			return <div style={pokemonStyle}>{filtered.map((pkmn) => <UserItem key={pkmn.name} user={pkmn} />)}</div>;
 		else return null;

@@ -11,13 +11,14 @@ import PokemonContext from '../../context/pokemon/pokemonContext';
 const Pokemon = ({ match }) => {
 	const pokemonContext = useContext(PokemonContext);
 
-	const { getPokemon, loading, pokemon, getPokemonAbilities } = pokemonContext;
+	const { clearUsers, getPokemon, loading, pokemon, getPokemonAbilities } = pokemonContext;
 
 	useEffect(() => {
 		getPokemon(match.params.pokemonName);
 		console.log('match.params.pokemonName: ', match.params.pokemonName);
 		console.log('match: ', match);
 		getPokemonAbilities(match.params.pokemonName);
+		clearUsers();
 		// console.log('abilities: ', abilities);
 		// console.log('pokemon: ', pokemon);
 		// eslint-disable-next-line
@@ -39,6 +40,13 @@ const Pokemon = ({ match }) => {
 					<img src={sprites.front_default} className='round-img' alt='' style={{ width: '150px' }} />
 					<h1>{name}</h1>
 					<p>
+						{weight && (
+							<Fragment>
+								<strong>Weight: </strong> {weight}
+							</Fragment>
+						)}
+					</p>
+					{/* <p>
 						<strong>Forms:</strong>{' '}
 						{forms.map((form, index) => (
 							<span>
@@ -46,7 +54,7 @@ const Pokemon = ({ match }) => {
 								{form.name}
 							</span>
 						))}
-					</p>
+					</p> */}
 				</div>
 				<div>
 					{/* {bio && (
@@ -57,13 +65,6 @@ const Pokemon = ({ match }) => {
 					)} */}
 					{/* <span className='btn btn-dark my-1'>Visit Pokemon Profile</span> */}
 					<ul>
-						<li>
-							{weight && (
-								<Fragment>
-									<strong>Weight: </strong> {weight}
-								</Fragment>
-							)}
-						</li>
 						{stats.map((stat) => (
 							<li>
 								<Fragment>
