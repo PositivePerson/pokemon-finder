@@ -1,8 +1,14 @@
-import React, { useContext } from 'react';
+import React, {  useContext, FunctionComponent } from 'react';
+import { RouteComponentProps } from "@reach/router";
 import { Route, Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+type Props = { 
+  component: FunctionComponent,
+  exact: boolean; } 
+  & RouteComponentProps;
+
+const PrivateRoute: FunctionComponent<Props> = ({ component: Component, ...rest }) => {
   const authContext = useContext(AuthContext);
   const { isAuthenticated, loading } = authContext;
   return (
@@ -12,7 +18,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         !isAuthenticated && !loading ? (
           <Redirect to='/login' />
         ) : (
-          <Component {...props} />
+          // <Component {...props} />
+          <Component {...rest} />
         )
       }
     />

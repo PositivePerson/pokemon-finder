@@ -9,7 +9,7 @@ import {
   CLEAR_ERRORS
 } from '../types';
 
-export default (state, action) => {
+export default (state: any, action: any) => {
   switch (action.type) {
     case USER_LOADED:
       return {

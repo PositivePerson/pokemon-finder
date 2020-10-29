@@ -4,7 +4,7 @@ import AlertContext from '../../context/alert/alertContext';
 const Alert = () => {
 	const alertContext = useContext(AlertContext);
 
-	const { alert } = alertContext;
+	const { alert }: any = alertContext;
 
 	return (
 		alert !== null && (

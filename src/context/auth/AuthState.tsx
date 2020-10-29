@@ -14,7 +14,11 @@ import {
   CLEAR_ERRORS
 } from '../types';
 
-const AuthState = props => {
+type Props = {
+	children: any
+}
+
+const AuthState = (props: Props) => {
   const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
@@ -42,7 +46,7 @@ const AuthState = props => {
   };
 
   // Register User
-  const register = async formData => {
+  const register = async (formData: any) => {
     const config = {
       headers: {
         'Content-Type': 'application/json'
@@ -67,7 +71,7 @@ const AuthState = props => {
   };
 
   // Login User
-  const login = async formData => {
+  const login = async (formData: any)  => {
     const config = {
       headers: {
         'Content-Type': 'application/json'

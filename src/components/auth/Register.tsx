@@ -1,12 +1,27 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, FormEvent } from 'react';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
-const Register = props => {
+type Props = {
+  history: {
+    push: any
+  }
+}
+
+// type formData = {
+//   preventDefault(): any,
+//   target: FormEvent<HTMLFormElement>
+// }
+
+// type formData = FormEvent<HTMLFormElement>;
+
+// type formData = any;
+
+const Register = (props: Props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
 
-  const { setAlert } = alertContext;
+  const { setAlert }: any = alertContext;
   const { register, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
@@ -30,9 +45,9 @@ const Register = props => {
 
   const { name, email, password, password2 } = user;
 
-  const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setUser({ ...user, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = (e: React.FormEvent)=> {
     e.preventDefault();
     if (name === '' || email === '' || password === '') {
       setAlert('Please enter all fields', 'danger');
@@ -84,7 +99,7 @@ const Register = props => {
             value={password}
             onChange={onChange}
             required
-            minLength='6'
+            minLength={6}
           />
         </div>
         <div className='form-group'>
@@ -96,7 +111,7 @@ const Register = props => {
             value={password2}
             onChange={onChange}
             required
-            minLength='6'
+            minLength={6}
           />
         </div>
         <input

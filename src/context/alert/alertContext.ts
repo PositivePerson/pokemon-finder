@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const alertContext = createContext();
+const alertContext = createContext<any>(null);
 
 export default alertContext;

@@ -3,13 +3,17 @@ import AlertContext from './alertContext';
 import AlertReducer from './alertReducer';
 import { SET_ALERT, REMOVE_ALERT } from '../types';
 
-const AlertState = (props) => {
+type Props = {
+	children: any
+}
+
+const AlertState = (props: Props) => {
 	const initialState = null;
 
 	const [ state, dispatch ] = useReducer(AlertReducer, initialState);
 
 	// Set Alert
-	const setAlert = (msg, type) => {
+	const setAlert = (msg: string, type: string) => {
 		dispatch({
 			type: SET_ALERT,
 			payload: { msg, type }

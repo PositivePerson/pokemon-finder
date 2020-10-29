@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Logo from '../../img/pokemon-logo.png';
 
-const Navbar = ({ img, title }) => {
+type Props = {
+	title: string
+}
+
+const Navbar = ({ title }: Props) => {
 	return (
 		<nav className='navbar bg-primary'>
 			<h3 className='m-0'>
@@ -31,7 +35,7 @@ const titleStyle = {
 	display: 'inline-block',
 	height: '100%',
 	verticalAlign: 'middle',
-	fontWeight: '500',
+	fontWeight: 500,
 	paddingLeft: '.25em'
 };
 

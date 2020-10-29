@@ -18,15 +18,8 @@ import AlertState from './context/alert/AlertState';
 import './App.css';
 import AuthState from './context/auth/AuthState';
 
+
 const App = () => {
-	// async componentDidMount() {
-	// 	this.setState({ loading: true });
-	// 	const res = await axios.get(
-	// 		`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process
-	// 			.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-	// 	);
-	// 	this.setState({ users: res.data, loading: false });
-	// }
 
 	return (
 		<AuthState>
@@ -36,7 +29,7 @@ const App = () => {
 						<div className='App'>
 							<Navbar />
 							<div className='container'>
-								<Alert />
+								{/* <Alert /> */}
 								<Switch>
 									<PrivateRoute exact path='/' component={Home} />
 									<Route exact path='/about' component={About} />

@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const UserItem = ({ user: { name } }) => {
+type Props = {
+	user: {
+		name: string
+	}
+}
+
+const UserItem = ({ user: { name } }: Props) => {
 	return (
 		<div className='card text-center'>
 			{/* <img src={sprites} alt='' className='round-img' style={{ width: '60px' }} /> */}

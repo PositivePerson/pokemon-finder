@@ -3,6 +3,10 @@ import UserItem from './UserItem';
 import Spinner from '../layout/Spinnner';
 import PokemonContext from '../../context/pokemon/pokemonContext';
 
+type Pkmn = {
+	name: string
+}
+
 const Users = () => {
 	const pokemonContext = useContext(PokemonContext);
 
@@ -14,7 +18,7 @@ const Users = () => {
 		return <Spinner />;
 	} else {
 		if (filtered.length < 1050)
-			return <div style={pokemonStyle}>{filtered.map((pkmn) => <UserItem key={pkmn.name} user={pkmn} />)}</div>;
+			return <div style={pokemonStyle}>{filtered.map((pkmn: Pkmn) => <UserItem key={pkmn.name} user={pkmn} />)}</div>;
 		else return null;
 	}
 };

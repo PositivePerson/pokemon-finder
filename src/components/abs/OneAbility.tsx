@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OneAbility = ({ ab }) => {
+type Props = {
+	ab: {
+		ability: {
+			name: string
+		}
+	}
+}
+
+const OneAbility = ({ ab }: Props) => {
 	return (
 		<div className='card my-1'>
 			<h5>

@@ -17,7 +17,7 @@ const Search = () => {
 	// 	[ text ]
 	// );
 
-	const onSubmit = (e) => {
+	const onSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		if (text === '') {
 			alertContext.setAlert('Please enter something', 'light');
@@ -28,7 +28,7 @@ const Search = () => {
 		}
 	};
 
-	const onChange = (e) => {
+	const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setText(e.target.value);
 		if (firstLoad) {
 			pokemonContext.searchPokemons(text);

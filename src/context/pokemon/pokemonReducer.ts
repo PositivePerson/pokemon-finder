@@ -1,6 +1,6 @@
 import { SEARCH_POKEMONS, SET_LOADING, CLEAR_POKEMONS, GET_POKEMON, FILTER_POKEMONS, GET_ABILITIES } from '../types';
 
-export default (state, action) => {
+export default (state: any, action: any) => {
 	switch (action.type) {
 		case SEARCH_POKEMONS:
 			console.log(action.payload);
@@ -20,7 +20,7 @@ export default (state, action) => {
 			console.log('Regex action payload: ', action.payload);
 			return {
 				...state,
-				filtered: state.pokemons.filter((pokemon) => {
+				filtered: state.pokemons.filter((pokemon: {name: string}) => {
 					const regex = new RegExp(`${action.payload}`, 'gi');
 					return pokemon.name.match(regex);
 				})

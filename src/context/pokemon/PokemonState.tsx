@@ -4,7 +4,11 @@ import PokemonContext from './pokemonContext';
 import PokemonReducer from './pokemonReducer';
 import { SEARCH_POKEMONS, SET_LOADING, CLEAR_POKEMONS, GET_POKEMON, FILTER_POKEMONS, GET_ABILITIES } from '../types';
 
-const PokemonState = (props) => {
+type Props = {
+	children: any
+}
+
+const PokemonState = (props: Props) => {
 	const initialState = {
 		pokemons: [],
 		filtered: [],
@@ -16,7 +20,7 @@ const PokemonState = (props) => {
 	const [ state, dispatch ] = useReducer(PokemonReducer, initialState);
 
 	// Search Pokemons
-	const searchPokemons = async (text) => {
+	const searchPokemons = async (text: string) => {
 		setLoading();
 
 		const res = await axios.get(
@@ -32,7 +36,7 @@ const PokemonState = (props) => {
 	};
 
 	// Get Pokemon
-	const getPokemon = async (name) => {
+	const getPokemon = async (name: string) => {
 		setLoading();
 
 		let res;
@@ -50,7 +54,7 @@ const PokemonState = (props) => {
 	};
 
 	// Filter Pokemons
-	const filterPokemons = (text) => {
+	const filterPokemons = (text: string) => {
 		dispatch({
 			type: FILTER_POKEMONS,
 			payload: text
@@ -58,7 +62,7 @@ const PokemonState = (props) => {
 	};
 
 	// Get Abilities
-	const getPokemonAbilities = async (name) => {
+	const getPokemonAbilities = async (name: string) => {
 		setLoading();
 
 		const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);

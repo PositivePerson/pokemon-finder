@@ -8,7 +8,7 @@ import Abilities from '../abs/Abilities';
 import { Link } from 'react-router-dom';
 import PokemonContext from '../../context/pokemon/pokemonContext';
 
-const Pokemon = ({ match }) => {
+const Pokemon = ({ match}: any ) => {
 	const pokemonContext = useContext(PokemonContext);
 
 	const { clearPokemons, getPokemon, loading, pokemon, getPokemonAbilities } = pokemonContext;
@@ -65,7 +65,7 @@ const Pokemon = ({ match }) => {
 					)} */}
 					{/* <span className='btn btn-dark my-1'>Visit Pokemon Profile</span> */}
 					<ul>
-						{stats.map((stat) => (
+						{stats.map((stat: any) => (
 							<li>
 								<Fragment>
 									<strong>{stat.stat.name}: </strong> {stat.base_stat}
