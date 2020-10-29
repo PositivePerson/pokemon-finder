@@ -8,15 +8,6 @@ type Props = {
   }
 }
 
-// type formData = {
-//   preventDefault(): any,
-//   target: FormEvent<HTMLFormElement>
-// }
-
-// type formData = FormEvent<HTMLFormElement>;
-
-// type formData = any;
-
 const Register = (props: Props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);

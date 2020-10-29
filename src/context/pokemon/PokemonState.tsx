@@ -24,8 +24,6 @@ const PokemonState = (props: Props) => {
 		setLoading();
 
 		const res = await axios.get(
-			// `https://api.github.com/search/users?q=${text}&client_id=${process.env
-			// 	.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
 			`https://pokeapi.co/api/v2/pokemon/?limit=1500&offset=0`
 		);
 

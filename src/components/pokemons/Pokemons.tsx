@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import UserItem from './UserItem';
+import UserItem from './PokeItem';
 import Spinner from '../layout/Spinnner';
 import PokemonContext from '../../context/pokemon/pokemonContext';
 
@@ -10,9 +10,7 @@ type Pkmn = {
 const Users = () => {
 	const pokemonContext = useContext(PokemonContext);
 
-	const { loading, filtered, pokemons } = pokemonContext;
-	// console.log('Pokemons from Users.js: ', pokemons);
-	// console.log('Filtered from Users.js: ', filtered);
+	const { loading, filtered } = pokemonContext;
 
 	if (loading) {
 		return <Spinner />;

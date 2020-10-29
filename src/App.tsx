@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Users from './components/pokemons/Users';
+import Users from './components/pokemons/Pokemons';
 import Pokemon from './components/pokemons/Pokemon';
 import Search from './components/pokemons/Search';
 import Alert from './components/layout/Alert';

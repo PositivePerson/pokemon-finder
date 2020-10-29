@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Search from '../pokemons/Search';
-import Users from '../pokemons/Users';
+import Users from '../pokemons/Pokemons';
 
 const Home = () => (
 	<Fragment>
