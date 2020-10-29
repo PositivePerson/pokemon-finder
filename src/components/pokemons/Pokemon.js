@@ -84,9 +84,14 @@ const Pokemon = ({ match }) => {
 			{/* <div className='badge badge-light'>Public Abilities: {abilities}</div> */}
 			{/* <div className='badge badge-dark'>Public Gists: {public_gists}</div> */}
 			{/* </div> */}
-			<div className='card text-center pt-3'>Abilities:</div>
-			{/* {abilities && <Abilities abilities={abilities} />} */}
-			{abilities && <Abilities moves={moves} />}
+			<div className=' pt-3'>
+				<h4>
+					<strong>Abilities:</strong>
+				</h4>
+				{abilities && <Abilities abilities={abilities} />}
+			</div>
+
+			{/* {abilities && <Abilities moves={moves} />} */}
 		</Fragment>
 	);
 };

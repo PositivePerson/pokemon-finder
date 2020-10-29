@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OneAbility = ({ repo }) => {
+const OneAbility = ({ ab }) => {
 	return (
-		<div className='card text-center'>
-			<h3>
-				<span>{repo.move.name}</span>
-			</h3>
+		<div className='card my-1'>
+			<h5>
+				<span>{ab.ability.name}</span>
+			</h5>
 		</div>
 	);
 };
 
 OneAbility.propTypes = {
-	repo: PropTypes.object.isRequired
+	ab: PropTypes.object.isRequired
 };
 
 export default OneAbility;

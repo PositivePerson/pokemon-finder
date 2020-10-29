@@ -49,7 +49,8 @@ const Search = () => {
 					</Link>
 				</div> */}
 			</form>
-			{pokemonContext.filtered.length < 1049 && (
+			{pokemonContext.filtered.length < 1050 &&
+			pokemonContext.filtered.length !== 0 && (
 				<button className='btn btn-light btn-block' onClick={pokemonContext.clearPokemons}>
 					Clear
 				</button>

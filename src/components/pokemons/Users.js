@@ -7,8 +7,8 @@ const Users = () => {
 	const pokemonContext = useContext(PokemonContext);
 
 	const { loading, filtered, pokemons } = pokemonContext;
-	console.log('Pokemons from Users.js: ', pokemons);
-	console.log('Filtered from Users.js: ', filtered);
+	// console.log('Pokemons from Users.js: ', pokemons);
+	// console.log('Filtered from Users.js: ', filtered);
 
 	if (loading) {
 		return <Spinner />;
