@@ -1,7 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Logo from '../../img/pokemon-logo.png';
+import Logo from '../../img/Logo.svg';
+import styled from 'styled-components'
+
+const Img = styled.img`
+	width: 125px;
+	margin-left: 8vw;
+`;
+
+const Nav = styled.nav`
+	/* background: var(--Dark); */
+
+	ul {
+		display: flex;
+		margin-right: 2rem;
+		margin-bottom: 0;
+
+		li {
+			margin: 0 2rem;
+		}
+
+		a {
+			color: #FFF;
+			text-decoration: none;
+		}
+	}
+`;
 
 type Props = {
 	title: string
@@ -9,12 +34,11 @@ type Props = {
 
 const Navbar = ({ title }: Props) => {
 	return (
-		<nav className='navbar bg-primary'>
-			<h3 className='m-0'>
-				<img src={Logo} alt='' style={imgStyle} />
-				<span style={titleStyle}>{title}</span>
-			</h3>
-			<ul className='m-0'>
+		<Nav className='navbar'>
+			<Link to='/'>
+				<Img src={Logo} alt={title} />
+			</Link>
+			<ul>
 				<li>
 					<Link to='/'>Home</Link>
 				</li>
@@ -22,22 +46,14 @@ const Navbar = ({ title }: Props) => {
 					<Link to='/About'>About</Link>
 				</li>
 			</ul>
-		</nav>
+		</Nav>
 	);
 };
 
-const imgStyle = {
-	verticalAlign: 'middle',
-	maxWidth: '2em'
-};
-
-const titleStyle = {
-	display: 'inline-block',
-	height: '100%',
-	verticalAlign: 'middle',
-	fontWeight: 500,
-	paddingLeft: '.25em'
-};
+// const imgStyle = {
+// 	verticalAlign: 'middle',
+// 	maxWidth: '2em'
+// };
 
 Navbar.defaultProps = {
 	title: 'Pokemon Finder'

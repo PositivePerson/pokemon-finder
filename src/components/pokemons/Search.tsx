@@ -1,14 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PokemonContext from '../../context/pokemon/pokemonContext';
-import AlertContext from '../../context/alert/alertContext';
 // import { Link } from 'react-router-dom';
 
 const Search = () => {
 	const pokemonContext = useContext(PokemonContext);
-	const alertContext = useContext(AlertContext);
 
-	const [ text, setText ] = useState('');
-	const [ firstLoad, setFirstLoad ] = useState(true);
+	const [text, setText] = useState('');
+	const [firstLoad, setFirstLoad] = useState(true);
 
 	// useEffect(
 	// 	() => {
@@ -20,7 +18,7 @@ const Search = () => {
 	const onSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		if (text === '') {
-			alertContext.setAlert('Please enter something', 'light');
+			alert('Please enter something light');
 		} else {
 			// pokemonContext.searchPokemons(text);
 			pokemonContext.filterPokemons(text);
@@ -50,11 +48,11 @@ const Search = () => {
 				</div> */}
 			</form>
 			{pokemonContext.filtered.length < 1050 &&
-			pokemonContext.filtered.length !== 0 && (
-				<button className='btn btn-light btn-block' onClick={pokemonContext.clearPokemons}>
-					Clear
-				</button>
-			)}
+				pokemonContext.filtered.length !== 0 && (
+					<button className='btn btn-light btn-block' onClick={pokemonContext.clearPokemons}>
+						Clear
+					</button>
+				)}
 		</div>
 	);
 };
