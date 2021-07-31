@@ -37,14 +37,15 @@ const Search = () => {
 	const [text, setText] = useState('');
 	const [firstLoad, setFirstLoad] = useState(true);
 
+	// "Home" page
 	const onSubmit = (e: string) => {
 		// e.preventDefault();
 		if (inputValue === '') {
 			alert('Input cannot be empty! wrr');
 		} else {
 			console.log(e);
-			pokemonContext.searchPokemons(inputValue);
-			// pokemonContext.filterPokemons(inputValue);
+			// pokemonContext.searchPokemons();
+			pokemonContext.filterPokemons(inputValue);
 			setInputValue('');
 		}
 	};
@@ -67,7 +68,7 @@ const Search = () => {
 	// "Pokemons list" page
 	const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInputValue(e.target.value);
-		pokemonContext.filterPokemons(e.target.value);
+		// pokemonContext.filterPokemons(e.target.value);
 	}
 
 	// onSubmit is coming  from Props, here it is only for testing

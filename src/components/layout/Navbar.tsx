@@ -22,6 +22,7 @@ const Nav = styled.nav`
 		}
 
 		a {
+			font-size: 13px;
 			color: #FFF;
 			text-decoration: none;
 		}
