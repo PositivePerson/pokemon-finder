@@ -9,45 +9,25 @@ const Img = styled.img`
 	margin-left: 8vw;
 `;
 
-const Nav = styled.nav`
-	/* background: var(--Dark); */
-
-	ul {
-		display: flex;
-		margin-right: 2rem;
-		margin-bottom: 0;
-
-		li {
-			margin: 0 2rem;
-		}
-
-		a {
-			font-size: 13px;
-			color: #FFF;
-			text-decoration: none;
-		}
-	}
-`;
-
 type Props = {
 	title: string
 }
 
 const Navbar = ({ title }: Props) => {
 	return (
-		<Nav className='navbar'>
+		<nav className="h-12 w-full inline-flex justify-between">
 			<Link to='/'>
 				<Img src={Logo} alt={title} />
 			</Link>
-			<ul>
-				<li>
-					<Link to='/'>Home</Link>
+			<ul className="flex h-12 leading-12 mr-8">
+				<li className="mx-8">
+					<Link to='/' className="text-tiny text-white no-underline">Home</Link>
 				</li>
-				<li>
-					<Link to='/About'>About</Link>
+				<li className="mx-8">
+					<Link to='/About' className="text-tiny text-white no-underline">About</Link>
 				</li>
 			</ul>
-		</Nav>
+		</nav>
 	);
 };
 
