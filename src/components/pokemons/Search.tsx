@@ -1,37 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import PokemonContext from '../../context/pokemon/pokemonContext';
-import styled from 'styled-components'
 // import { Link } from 'react-router-dom';
 
-const Form = styled.form`
-	width: 20rem;
-	font-size: 13px;
+type Props = {
+	className: string
+}
 
-	input, button {
-		width: 100%;
-		color: #FFF;
-		border-radius: 20px;
-		height: 2.3rem;
-		outline: none;
-	}
-
-	input {
-		background: transparent;
-		border: 1px solid white;
-		padding-left: .8rem;
-
-		::placeholder {
-			color: #FFF;
-		};
-	}
-
-	button {
-		margin-top: 5px;
-		background: var(--Dark);
-	}
-`;
-
-const Search = () => {
+const Search = ({ className }: Props) => {
 	const pokemonContext = useContext(PokemonContext);
 
 	const [text, setText] = useState('');
@@ -83,13 +59,16 @@ const Search = () => {
 
 	useEffect(() => {
 		pokemonContext.searchPokemons();
+		// eslint-disable-next-line
 	}, [])
 
 	return (
-		<Form
+		<form
 			onSubmit={() => onSubmit(inputValue)}
+			className={`${className} text-tiny w-80`}
 		>
 			<input
+				className="bg-transparent pl-3.5 border-white border placeholder-white text-white outline-none rounded-full h-9 w-full"
 				type="text"
 				placeholder="Search Pokemon..."
 				value={inputValue}
@@ -97,6 +76,7 @@ const Search = () => {
 				onChange={onInputChange}
 			/>
 			<button
+				className="mt-1 bg-dark text-white outline-none rounded-full h-9 w-full"
 				type="submit"
 				id="login-button"
 				// onSubmit={() => onSubmit(usernameValue, passwordValue)}
@@ -104,7 +84,7 @@ const Search = () => {
 			>
 				Search
 			</button>
-		</Form>
+		</form>
 	);
 
 	// return (
@@ -127,5 +107,9 @@ const Search = () => {
 	// 	</div>
 	// );
 };
+
+Search.propTypes = {
+	className: PropTypes.string,
+}
 
 export default Search;
