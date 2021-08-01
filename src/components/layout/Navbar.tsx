@@ -51,11 +51,6 @@ const Navbar = ({ title }: Props) => {
 	);
 };
 
-// const imgStyle = {
-// 	verticalAlign: 'middle',
-// 	maxWidth: '2em'
-// };
-
 Navbar.defaultProps = {
 	title: 'Pokemon Finder'
 };

@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect, useContext } from 'react';
 
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import ProgressBar from 'react-bootstrap/ProgressBar';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Spinner from '../layout/Spinnner';
 import Abilities from '../abs/Abilities';
 import { Link } from 'react-router-dom';
 import PokemonContext from '../../context/pokemon/pokemonContext';
 
-const Pokemon = ({ match}: any ) => {
+const Pokemon = ({ match }: any) => {
 	const pokemonContext = useContext(PokemonContext);
 
 	const { clearPokemons, getPokemon, loading, pokemon, getPokemonAbilities } = pokemonContext;
@@ -70,7 +70,8 @@ const Pokemon = ({ match}: any ) => {
 								<Fragment>
 									<strong>{stat.stat.name}: </strong> {stat.base_stat}
 									<div>
-										<ProgressBar variant='danger' now={stat.base_stat} />
+										{/* <ProgressBar variant='danger' now={stat.base_stat} /> */}
+										There should be a progressbar
 									</div>
 								</Fragment>
 							</li>
