@@ -7,7 +7,7 @@ type Pkmn = {
 	name: string
 }
 
-const Users = () => {
+const Pokemons = () => {
 	const pokemonContext = useContext(PokemonContext);
 
 	const { loading, filtered } = pokemonContext;
@@ -27,4 +27,4 @@ const pokemonStyle = {
 	gridGap: '1rem'
 };
 
-export default Users;
+export default Pokemons;

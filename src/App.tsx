@@ -17,17 +17,15 @@ const App = () => {
 	return (
 		<PokemonState>
 			<Router>
-				<div className='App'>
+				<div className='md:h-screen'>
 					<Navbar />
-					<div className='container'>
-						{/* <Alert /> */}
-						<Switch>
-							<PrivateRoute exact path='/' component={Home} />
-							<Route exact path='/about' component={About} />
-							<Route exact path='/pokemons/:pokemonName' component={Pokemon} />
-							<Route component={NotFound} status={404} />
-						</Switch>
-					</div>
+					{/* <Alert /> */}
+					<Switch>
+						<PrivateRoute exact path='/' component={Home} />
+						<Route exact path='/about' component={About} />
+						<Route exact path='/pokemons/:pokemonName' component={Pokemon} />
+						<Route component={NotFound} status={404} />
+					</Switch>
 				</div>
 			</Router>
 		</PokemonState>

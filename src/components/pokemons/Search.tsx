@@ -65,10 +65,10 @@ const Search = ({ className }: Props) => {
 	return (
 		<form
 			onSubmit={() => onSubmit(inputValue)}
-			className={`${className} text-tiny w-80`}
+			className={`${className} text-tiny w-96`}
 		>
 			<input
-				className="bg-transparent pl-3.5 border-white border placeholder-white text-white outline-none rounded-full h-9 w-full"
+				className="bg-transparent pl-3.5 border-white border placeholder-white text-white outline-none rounded-full h-10 w-full"
 				type="text"
 				placeholder="Search Pokemon..."
 				value={inputValue}
@@ -76,7 +76,7 @@ const Search = ({ className }: Props) => {
 				onChange={onInputChange}
 			/>
 			<button
-				className="mt-1 bg-dark text-white outline-none rounded-full h-9 w-full"
+				className="mt-2 bg-dark text-white outline-none rounded-full h-10 w-full"
 				type="submit"
 				id="login-button"
 				// onSubmit={() => onSubmit(usernameValue, passwordValue)}

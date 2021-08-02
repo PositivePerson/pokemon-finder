@@ -5,7 +5,10 @@ module.exports = {
     extend: {
       lineHeight: {
         '12': '3rem',
-      }
+      },
+      width: {
+        '88': '22rem',
+      },
     },
     colors: {
       transparent: 'transparent',
