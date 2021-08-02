@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Search from '../pokemons/Search';
-import Pokemons from '../pokemons/Pokemons';
 import styled from 'styled-components';
 import MainPikachu from '../../img/Pikachu.svg';
 import BottomPokes from '../../img/BottomPokes.svg';
@@ -19,7 +18,7 @@ const Home = () => (
 			/>
 		</div>
 		<div className="grid items-end mt-10">
-			<div className="">
+			<div>
 				<SearchComponent className='' />
 			</div>
 			<div className="ml-7">
