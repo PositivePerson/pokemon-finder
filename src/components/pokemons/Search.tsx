@@ -2,11 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import PokemonContext from '../../context/pokemon/pokemonContext';
 // import { Link } from 'react-router-dom';
 
-// type Props = {
-// 	className: string
-// }
+type Props = {
+	// 'handleSubmit' is NOT passed from Home Page
+	handleSubmit?: Function
+}
 
-const Search = () => {
+const Search = ({ handleSubmit }: Props) => {
 	const pokemonContext = useContext(PokemonContext);
 
 	const [text, setText] = useState('');
@@ -18,9 +19,10 @@ const Search = () => {
 		if (inputValue === '') {
 			alert('Input cannot be empty! wrr');
 		} else {
-			console.log(e);
+			// console.log(e);
 			// pokemonContext.searchPokemons();
 			pokemonContext.filterPokemons(inputValue);
+			if (handleSubmit) handleSubmit(inputValue);
 			setInputValue('');
 		}
 	};
@@ -43,6 +45,7 @@ const Search = () => {
 	// "Pokemons list" page
 	const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInputValue(e.target.value);
+		if (!handleSubmit) pokemonContext.filterPokemons(e.target.value);
 		// pokemonContext.filterPokemons(e.target.value);
 	}
 
@@ -74,15 +77,17 @@ const Search = () => {
 				id="pokemon-input"
 				onChange={onInputChange}
 			/>
-			<button
-				className="mt-2 bg-dark text-white outline-none rounded-full h-10 w-full"
-				type="submit"
-				id="login-button"
-				// onSubmit={() => onSubmit(usernameValue, passwordValue)}
-				disabled={disabledSubmit}
-			>
-				Search
-			</button>
+			{handleSubmit &&
+				<button
+					className="mt-2 bg-dark text-white outline-none rounded-full h-10 w-full"
+					type="submit"
+					id="login-button"
+					// onSubmit={() => onSubmit(usernameValue, passwordValue)}
+					disabled={disabledSubmit}
+				>
+					Search
+				</button>
+			}
 		</form>
 	);
 

@@ -23,7 +23,7 @@ const App = () => {
 					{/* <Alert /> */}
 					<Switch>
 						<PrivateRoute exact path='/' component={Home} />
-						<Route exact path='/searching/:pokemonName' component={PokemonsList} />
+						<Route exact path='/list/:pokemonName' component={PokemonsList} />
 						<Route exact path='/pokemons/:pokemonName' component={Pokemon} />
 						<Route exact path='/about' component={About} />
 						<Route component={NotFound} status={404} />
