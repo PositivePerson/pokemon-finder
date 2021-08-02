@@ -1,12 +1,7 @@
 import React from 'react';
-import Search from '../pokemons/Search';
-import styled from 'styled-components';
+import Search from '../pokemons/Search'
 import MainPikachu from '../../img/Pikachu.svg';
 import BottomPokes from '../../img/BottomPokes.svg';
-
-const SearchComponent = styled(Search)`
-	/* margin-left: 2rem; */
-`;
 
 const Home = () => (
 	<div className="grid grid-cols-2 gap-3 mt-12 h-5/6">
@@ -19,7 +14,7 @@ const Home = () => (
 		</div>
 		<div className="grid items-end mt-10">
 			<div>
-				<SearchComponent className='' />
+				<Search />
 			</div>
 			<div className="ml-7">
 				<img

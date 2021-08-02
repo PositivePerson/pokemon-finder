@@ -1,13 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import PokemonContext from '../../context/pokemon/pokemonContext';
 // import { Link } from 'react-router-dom';
 
-type Props = {
-	className: string
-}
+// type Props = {
+// 	className: string
+// }
 
-const Search = ({ className }: Props) => {
+const Search = () => {
 	const pokemonContext = useContext(PokemonContext);
 
 	const [text, setText] = useState('');
@@ -65,7 +64,7 @@ const Search = ({ className }: Props) => {
 	return (
 		<form
 			onSubmit={() => onSubmit(inputValue)}
-			className={`${className} text-tiny w-96`}
+			className="text-tiny w-96"
 		>
 			<input
 				className="bg-transparent pl-3.5 border-white border placeholder-white text-white outline-none rounded-full h-10 w-full"
@@ -108,8 +107,8 @@ const Search = ({ className }: Props) => {
 	// );
 };
 
-Search.propTypes = {
-	className: PropTypes.string,
-}
+// Search.propTypes = {
+// 	className: PropTypes.string,
+// }
 
 export default Search;
