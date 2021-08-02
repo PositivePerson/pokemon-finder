@@ -19,7 +19,7 @@ const Navbar = ({ title }: Props) => {
 			<Link to='/'>
 				<Img src={Logo} alt={title} />
 			</Link>
-			<ul className="flex h-12 leading-12 mr-8">
+			<ul className="flex h-12 leading-12 mr-8 font-medium">
 				<li className="mx-8">
 					<Link to='/' className="text-tiny text-white no-underline">Home</Link>
 				</li>
