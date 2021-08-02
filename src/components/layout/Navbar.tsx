@@ -19,11 +19,11 @@ const Navbar = ({ title }: Props) => {
 			<Link to='/'>
 				<Img src={Logo} alt={title} />
 			</Link>
-			<ul className="flex h-12 leading-12 mr-8 font-medium">
-				<li className="mx-8">
+			<ul className="flex h-12 leading-12 mr-20 lg:mr-60 font-medium">
+				<li className="mx-8 lg:mx-9">
 					<Link to='/' className="text-tiny text-white no-underline">Home</Link>
 				</li>
-				<li className="mx-8">
+				<li className="mx-8 lg:mx-9">
 					<Link to='/About' className="text-tiny text-white no-underline">About</Link>
 				</li>
 			</ul>
