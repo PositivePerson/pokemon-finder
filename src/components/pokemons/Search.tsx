@@ -12,15 +12,12 @@ const Search = ({ value, handleSubmit }: Props) => {
 	const pokemonContext = useContext(PokemonContext);
 
 	// "Home" page
-	const onSubmit = (e: string) => {
-		// e.preventDefault();
-		if (inputValue === '') {
-			alert('Input cannot be empty! wrr');
-		} else {
-			pokemonContext.filterPokemons(inputValue);
-			if (handleSubmit) handleSubmit(inputValue);
-			setInputValue('');
-		}
+	const onSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+
+		pokemonContext.filterPokemons(inputValue);
+		if (handleSubmit) handleSubmit(inputValue);
+		setInputValue('');
 	};
 
 	const [inputValue, setInputValue] = useState(value);
@@ -44,7 +41,7 @@ const Search = ({ value, handleSubmit }: Props) => {
 
 	return (
 		<form
-			onSubmit={() => onSubmit(inputValue)}
+			onSubmit={onSubmit}
 			className="text-tiny w-96"
 		>
 			<input
