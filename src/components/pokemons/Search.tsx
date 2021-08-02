@@ -11,13 +11,14 @@ type Props = {
 const Search = ({ value, handleSubmit }: Props) => {
 	const pokemonContext = useContext(PokemonContext);
 
-	// "Home" page
 	const onSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 
-		pokemonContext.filterPokemons(inputValue);
-		if (handleSubmit) handleSubmit(inputValue);
-		setInputValue('');
+		if (handleSubmit) {
+			pokemonContext.filterPokemons(inputValue);
+			handleSubmit(inputValue);
+			setInputValue('');
+		}
 	};
 
 	const [inputValue, setInputValue] = useState(value);

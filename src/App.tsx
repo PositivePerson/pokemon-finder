@@ -18,7 +18,7 @@ const App = () => {
 	return (
 		<PokemonState>
 			<Router>
-				<div className='md:h-screen'>
+				<div className='md:h-screen overflow-hidden'>
 					<Navbar />
 					<Switch>
 						<PrivateRoute exact path='/' component={Home} />
