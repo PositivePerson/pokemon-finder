@@ -20,7 +20,6 @@ const App = () => {
 			<Router>
 				<div className='md:h-screen'>
 					<Navbar />
-					{/* <Alert /> */}
 					<Switch>
 						<PrivateRoute exact path='/' component={Home} />
 						<Route exact path='/list/:pokemonName' component={PokemonsList} />

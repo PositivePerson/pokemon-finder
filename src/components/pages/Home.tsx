@@ -23,7 +23,7 @@ const Home = () => {
 			</div>
 			<div className="grid items-end mt-10">
 				<div>
-					<Search handleSubmit={handleSubmit} />
+					<Search value={''} handleSubmit={handleSubmit} />
 				</div>
 				<div className="ml-7">
 					<img

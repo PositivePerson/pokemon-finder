@@ -1,17 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import PokemonContext from '../../context/pokemon/pokemonContext';
-// import { Link } from 'react-router-dom';
 
 type Props = {
+	value: string,
 	// 'handleSubmit' is NOT passed from Home Page
 	handleSubmit?: Function
 }
 
-const Search = ({ handleSubmit }: Props) => {
+const Search = ({ value, handleSubmit }: Props) => {
 	const pokemonContext = useContext(PokemonContext);
-
-	const [text, setText] = useState('');
-	const [firstLoad, setFirstLoad] = useState(true);
 
 	// "Home" page
 	const onSubmit = (e: string) => {
@@ -19,40 +17,20 @@ const Search = ({ handleSubmit }: Props) => {
 		if (inputValue === '') {
 			alert('Input cannot be empty! wrr');
 		} else {
-			// console.log(e);
-			// pokemonContext.searchPokemons();
 			pokemonContext.filterPokemons(inputValue);
 			if (handleSubmit) handleSubmit(inputValue);
 			setInputValue('');
 		}
 	};
 
-	// const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-	// 	setText(e.target.value);
-	// 	if (firstLoad) {
-	// 		pokemonContext.searchPokemons(text);
-	// 		setFirstLoad(false);
-	// 	} else {
-	// 		pokemonContext.filterPokemons(e.target.value);
-	// 	}
-	// };
-
-
-
-	const [inputValue, setInputValue] = useState('');
+	const [inputValue, setInputValue] = useState(value);
 	const [disabledSubmit, setDisabledSubmit] = useState(true);
 
 	// "Pokemons list" page
 	const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInputValue(e.target.value);
 		if (!handleSubmit) pokemonContext.filterPokemons(e.target.value);
-		// pokemonContext.filterPokemons(e.target.value);
 	}
-
-	// onSubmit is coming  from Props, here it is only for testing
-	// const onSubmit = (a: string) => {
-	// 	console.log(a);
-	// }
 
 	useEffect(() => {
 		if ((inputValue) && disabledSubmit) setDisabledSubmit(false);
@@ -82,7 +60,6 @@ const Search = ({ handleSubmit }: Props) => {
 					className="mt-2 bg-dark text-white outline-none rounded-full h-10 w-full"
 					type="submit"
 					id="login-button"
-					// onSubmit={() => onSubmit(usernameValue, passwordValue)}
 					disabled={disabledSubmit}
 				>
 					Search
@@ -90,30 +67,11 @@ const Search = ({ handleSubmit }: Props) => {
 			}
 		</form>
 	);
-
-	// return (
-	// 	<div>
-	// 		<form className='form' onSubmit={onSubmit}>
-	// 			<input type='text' name='text' placeholder='Search Pokemon...' value={text} onChange={onChange} />
-	// 			<input type='submit' value='Search' className='btn btn-dark btn-block' />
-	// 			{/* <div>
-	// 				<Link to={`/pokemons/${text}`}>
-	// 					<input type='submit' value='Search' className='btn btn-dark btn-block' />
-	// 				</Link>
-	// 			</div> */}
-	// 		</form>
-	// 		{pokemonContext.filtered.length < 1050 &&
-	// 			pokemonContext.filtered.length !== 0 && (
-	// 				<button className='btn btn-light btn-block' onClick={pokemonContext.clearPokemons}>
-	// 					Clear
-	// 				</button>
-	// 			)}
-	// 	</div>
-	// );
 };
 
-// Search.propTypes = {
-// 	className: PropTypes.string,
-// }
+Search.propTypes = {
+	value: PropTypes.string.isRequired,
+	handleSubmit: PropTypes.func,
+}
 
 export default Search;
