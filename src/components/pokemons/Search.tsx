@@ -47,7 +47,7 @@ const Search = ({ value, handleSubmit }: Props) => {
 			className="text-tiny w-96"
 		>
 			<input
-				className="bg-transparent pl-3.5 border-white border placeholder-white text-white outline-none rounded-full h-10 w-full"
+				className="bg-transparent focus:bg-white pl-3.5 border-white border placeholder-white text-white focus:text-contrast outline-none rounded-full h-10 w-full"
 				type="text"
 				placeholder="Search Pokemon..."
 				value={inputValue}

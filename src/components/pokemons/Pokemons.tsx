@@ -29,7 +29,7 @@ const Pokemons = ({ showBottomPokes, setShowBottomPokes }: Props) => {
 	} else {
 		if (filtered.length < 1050)
 			return (
-				<div style={pokemonStyle}>
+				<div className={`grid grid-cols-${filtered.length < 5 ? filtered.length : 5} gap-x-0 gap-y-1`} style={pokemonStyle}>
 					{filtered.map((pkmn: Pkmn) =>
 						<PokeItem key={pkmn.name} character={pkmn} />
 					)}
@@ -40,9 +40,9 @@ const Pokemons = ({ showBottomPokes, setShowBottomPokes }: Props) => {
 };
 
 const pokemonStyle = {
-	display: 'grid',
-	gridTemplateColumns: 'repeat(5, 1fr)',
-	gridGap: '1rem 0rem'
+	// display: 'grid',
+	// gridTemplateColumns: `repeat(5, 1fr)`,
+	// gridGap: '1rem 0rem'
 };
 
 export default Pokemons;
