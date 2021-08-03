@@ -53,6 +53,7 @@ const Search = ({ value, handleSubmit }: Props) => {
 				value={inputValue}
 				id="pokemon-input"
 				onChange={onInputChange}
+				spellCheck={false}
 			/>
 			{handleSubmit &&
 				<button
