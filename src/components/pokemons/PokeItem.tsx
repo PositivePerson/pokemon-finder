@@ -1,30 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 type Props = {
-	user: {
-		name: string
+	character: {
+		name: string,
+		url: string
 	}
 }
 
-const UserItem = ({ user: { name } }: Props) => {
-	return (
-		<div className='card text-center'>
-			{/* <img src={sprites} alt='' className='round-img' style={{ width: '60px' }} /> */}
-			<h3>{name}</h3>
+const PokeItem = ({ character }: Props) => {
+	console.log(character);
 
-			<div>
-				<Link to={`/pokemons/${name}`} className='btn btn-dark btn-sm my-1'>
-					More
-				</Link>
+	const [imageLink, setImageLink] = useState('');
+
+	useEffect(() => {
+		async function fetchData() {
+			const poke = await axios.get(character.url);
+			console.log("poke, ", poke);
+			setImageLink(poke.data.sprites.front_default);
+			return poke;
+		}
+		fetchData();
+		// eslint-disable-next-line
+	}, [])
+
+	return (
+		<Link to={`/pokemons/${character.name}`} className="flex justify-center">
+			<div className='group w-28 overflow-hidden bg-medium hover:shadow-inner text-white text-center rounded-tf pb-4 mx-2'>
+				<img src={imageLink} alt={`${character.name} look`} className='-mb-1 mx-auto max-w-96 max-h-96' />
+				<h3 className="capitalize font-smythe group-hover:bg-mediumDark whitespace-nowrap">{character.name}</h3>
 			</div>
-		</div>
+		</Link>
 	);
 };
 
-UserItem.propTypes = {
-	user: PropTypes.object.isRequired
+PokeItem.propTypes = {
+	character: PropTypes.object.isRequired
 };
 
-export default UserItem;
+export default PokeItem;

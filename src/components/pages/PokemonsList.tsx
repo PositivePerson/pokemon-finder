@@ -10,7 +10,7 @@ const PokemonsList = ({ match }: any) => {
             <div className="flex justify-center mt-20">
                 <Search value={match.params.pokemonName} />
             </div>
-            <div className="bg-gradient-to-br from-mediumDark to-medium opacity-75 shadow-xmd mx-auto h-5/6 w-4/5 rounded-ft mt-5">
+            <div className="bg-gradient-to-br from-mediumDark to-medium opacity-75 shadow-xmd mx-auto h-5/6 w-4/5 rounded-ft px-12 pt-16 mt-5">
                 <Pokemons />
             </div>
             <img
