@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PokeItem from './PokeItem';
 import Spinner from '../layout/Spinnner';
 import Loading from '../../img/Loading.gif';
@@ -9,10 +9,20 @@ type Pkmn = {
 	url: string
 }
 
-const Pokemons = () => {
+type Props = {
+	showBottomPokes: boolean,
+	setShowBottomPokes: Function
+}
+
+const Pokemons = ({ showBottomPokes, setShowBottomPokes }: Props) => {
 	const pokemonContext = useContext(PokemonContext);
 
 	const { loading, filtered } = pokemonContext;
+
+	useEffect(() => {
+		if (filtered.length > 13 && showBottomPokes) setShowBottomPokes(false);
+		else if (filtered.length <= 13 && !showBottomPokes) setShowBottomPokes(true);
+	}, [filtered, showBottomPokes, setShowBottomPokes]);
 
 	if (loading) {
 		return <Spinner />;

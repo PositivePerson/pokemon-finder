@@ -37,6 +37,7 @@ const Search = ({ value, handleSubmit }: Props) => {
 
 	useEffect(() => {
 		pokemonContext.searchPokemons();
+		if (!handleSubmit) pokemonContext.filterPokemons(inputValue);
 		// eslint-disable-next-line
 	}, [])
 

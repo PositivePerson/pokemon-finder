@@ -28,8 +28,8 @@ const PokeItem = ({ character }: Props) => {
 
 	return (
 		<Link to={`/pokemons/${character.name}`} className="flex justify-center">
-			<div className='group w-28 overflow-hidden bg-medium hover:shadow-inner text-white text-center rounded-tf pb-4 mx-2'>
-				<img src={imageLink} alt={`${character.name} look`} className='-mb-1 mx-auto max-w-96 max-h-96' />
+			<div className='group w-28 overflow-hidden hover:bg-medium hover:shadow-inner text-white text-center rounded-tf pb-4 mx-2'>
+				<img src={imageLink} alt={`${character.name} look`} className='-mb-2 mx-auto max-w-96 max-h-96' />
 				<h3 className="capitalize font-smythe group-hover:bg-mediumDark whitespace-nowrap">{character.name}</h3>
 			</div>
 		</Link>
