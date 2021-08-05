@@ -30,7 +30,8 @@ module.exports = {
       'smythe': ['Smythe', 'serif'],
     },
     fontSize: {
-      'tiny': '.825rem'
+      'tiny': '.825rem',
+      '2xl': '1.5rem',
     },
     maxWidth: {
       '96': '96px'
